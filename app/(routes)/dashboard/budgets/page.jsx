@@ -2,7 +2,7 @@ import React from 'react'
 
 function page() {
     return (
-        <div>This is Dashboard</div>
+        <div>My Budgets</div>
     )
 }
 
