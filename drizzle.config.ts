@@ -10,3 +10,6 @@ export default {
     connectionString: process.env.NEXT_PUBLIC_DATABASE_URL,
   },
 } satisfies Config;
+
+
+//drizzle configuration not working 
