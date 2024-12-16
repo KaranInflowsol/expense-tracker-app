@@ -12,8 +12,3 @@ export default {
 } satisfies Config;
 
 
-//drizzle configuration not working 
-
-//drizzle configuration not working
-
-//un neccesarry comment 
