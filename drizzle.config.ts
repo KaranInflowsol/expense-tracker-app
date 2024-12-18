@@ -12,3 +12,4 @@ export default {
 } satisfies Config;
 
 
+//drizzle configuration is not working 
