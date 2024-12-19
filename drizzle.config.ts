@@ -1,15 +1,17 @@
-import type { Config } from "drizzle-kit";
 import * as dotenv from "dotenv";
+import { defineConfig } from "drizzle-kit";
 dotenv.config({ path: ".env.local" });
 
-export default {
+export default defineConfig({
   dialect: "postgresql", // Add this line
-  driver: "pg", // Ensure this is correct for your setup
   schema: "./utils/schema.jsx",
+  schemaFilter: "public",
+  verbose: true,
+  strict: true,
   dbCredentials: {
-    connectionString: process.env.NEXT_PUBLIC_DATABASE_URL,
+    url: process.env.NEXT_PUBLIC_DATABASE_URL,
   },
-} satisfies Config;
+});
 
 
 //drizzle configuration is not working 
