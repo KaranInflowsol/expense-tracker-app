@@ -3,7 +3,7 @@ import { defineConfig } from "drizzle-kit";
 dotenv.config({ path: ".env.local" });
 
 export default defineConfig({
-  dialect: "postgresql", // Add this line
+  dialect: "postgresql", 
   schema: "./utils/schema.jsx",
   schemaFilter: "public",
   verbose: true,
@@ -14,4 +14,3 @@ export default defineConfig({
 });
 
 
-//drizzle configuration is not working 

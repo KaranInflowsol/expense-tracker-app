@@ -44,9 +44,9 @@ function SideNav() {
         <div className='h-screen p-5 border shadow-sm'>
             <Image src={'/logo.svg'} alt='logo' width={160} height={100} />
             <div className='mt-5'>
-                {menuList.map((menu, index) => (
-                    <Link href={menu.path}>
-                        <h2 key={menu.id} className={`flex gap-2 items-center text-gray-500 mb-2 p-5 cursor-pointer rounded-md hover:text-red-500 hover:bg-red-100 ${path == menu.path && 'text-red-600 bg-red-100'}`}>
+                {menuList.map((menu) => (
+                    <Link key={menu.id} href={menu.path}>
+                        <h2 className={`flex gap-2 items-center text-gray-500 mb-2 p-5 cursor-pointer rounded-md hover:text-red-500 hover:bg-red-100 ${path == menu.path && 'text-red-600 bg-red-100'}`}>
                             <menu.icon />
                             {menu.name}
                         </h2>
@@ -57,7 +57,8 @@ function SideNav() {
                 <UserButton />
                 Profile
             </div>
-        </div >
+        </div>
+
 
     )
 }
