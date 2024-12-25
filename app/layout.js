@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Outfit } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/sonner";
 
 
 const outfit = Outfit({
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         <body
           className={`${outfit.variable} antialiased`}
         >
+          <Toaster />
           {children}
         </body>
       </html>
