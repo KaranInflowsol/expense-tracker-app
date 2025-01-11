@@ -14,4 +14,4 @@ export default defineConfig({
 });
 
 
-// tryed to fix drizzle error
+// tryed to fix drizzle error but not solved
