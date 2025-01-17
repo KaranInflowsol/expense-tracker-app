@@ -7,3 +7,6 @@ export const Budgets = pgTable('budgets', {
     icon: varchar('icon'),
     createdBy: varchar('createdBy').notNull(),
 });
+
+
+//added schema
