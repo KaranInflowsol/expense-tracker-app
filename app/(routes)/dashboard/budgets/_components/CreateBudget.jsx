@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
     Dialog,
     DialogContent,
@@ -7,8 +7,8 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
-import EmojiPicker from 'emoji-picker-react'
+} from "@/components/ui/dialog";
+import EmojiPicker from 'emoji-picker-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Budgets } from '@/utils/schema';
@@ -19,26 +19,28 @@ import { db } from '@/utils/dbConfig';
 function CreateBudget() {
     const [emojiIcon, setEmojiIcon] = useState('😊');
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
-
     const [name, setName] = useState();
     const [amount, setAmount] = useState();
     const { user } = useUser();
 
-
-    // used to create new budget
     const onCreateBudget = async () => {
-        const result = await db.insert(Budgets)
-            .values({
-                name: name,
-                amount: amount,
-                createdBy: user?.primaryEmailAddress?.emailAddress,
-                icon: emojiIcon
-            }).returning({ insertedId: Budgets.id })
+        try {
+            const result = await db.insert(Budgets)
+                .values({
+                    name: name,
+                    amount: amount,
+                    createdBy: user?.primaryEmailAddress?.emailAddress,
+                    icon: emojiIcon
+                }).returning({ insertedId: Budgets.id });
 
-        if (result) {
-            toast('Budget Created Successfully!!!')
+            if (result) {
+                toast('Budget Created Successfully!!!');
+            }
+        } catch (error) {
+            console.error('Error creating budget:', error);
+            toast('Failed to create budget');
         }
-    }
+    };
 
     return (
         <div>
@@ -100,7 +102,6 @@ function CreateBudget() {
                                 </div>
                             </DialogHeader>
                         </DialogContent>
-
                     </DialogHeader>
                 </DialogContent>
             </Dialog>

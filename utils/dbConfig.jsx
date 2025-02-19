@@ -1,6 +1,8 @@
-import { neon } from '@neondatabase/serverless';
+import { Pool } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-serverless';
 
-const sql = neon(process.env.NEXT_PUBLIC_DATABASE_URL);
-export const db = drizzle(sql);
+// Create a new Pool instance with the connection string
+const pool = new Pool({ connectionString: process.env.NEXT_PUBLIC_DATABASE_URL });
 
+// Use the pool with drizzle
+export const db = drizzle(pool);
