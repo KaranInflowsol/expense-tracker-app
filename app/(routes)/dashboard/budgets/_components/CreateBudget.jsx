@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import {
     Dialog,
+    DialogClose,
     DialogContent,
     DialogDescription,
+    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -16,7 +18,7 @@ import { useUser } from '@clerk/nextjs';
 import { toast } from 'sonner';
 import { db } from '@/utils/dbConfig';
 
-function CreateBudget() {
+function CreateBudget({refreshData}) {
     const [emojiIcon, setEmojiIcon] = useState('😊');
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
     const [name, setName] = useState();
@@ -34,6 +36,7 @@ function CreateBudget() {
                 }).returning({ insertedId: Budgets.id });
 
             if (result) {
+                refreshData();
                 toast('Budget Created Successfully!!!');
             }
         } catch (error) {
@@ -91,16 +94,21 @@ function CreateBudget() {
                                                 onChange={(e) => setAmount(e.target.value)}
                                             />
                                         </div>
-                                        <Button
+                                        
+                                    </div>
+                                </div>
+                            </DialogHeader>
+                            <DialogFooter className="sm:justify-start">
+                                <DialogClose asChild>
+                                <Button
                                             disabled={!(name && amount)}
                                             onClick={() => onCreateBudget()}
                                             className="mt-5 w-full"
                                         >
                                             Create Budget
                                         </Button>
-                                    </div>
-                                </div>
-                            </DialogHeader>
+                                </DialogClose>
+                            </DialogFooter>
                         </DialogContent>
                     </DialogHeader>
                 </DialogContent>
